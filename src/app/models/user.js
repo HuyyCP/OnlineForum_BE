@@ -1,4 +1,4 @@
-import connection from '../../config/dbconfig'
+import connection from "../../config/DbConfig.js"
 import { DataTypes, Model, Sequelize } from 'sequelize'
 
 class User extends Model { }
@@ -10,6 +10,6 @@ User.init({
     dateofbirth: { type: DataTypes.DATE },
     phonenumber: { type: DataTypes.STRING },
     datecreate: { type: DataTypes.TIME },
-}, { connection, tableName: 'user', timestamps: false });
+}, { sequelize: connection, tableName: 'user', timestamps: false });
 
 export default User

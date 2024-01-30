@@ -1,11 +1,10 @@
-const config = require('./config')
-const express = require('express')
+import { port } from './config/index.js'
+import express from 'express'
+import route from './routes/index.js'
 
 
 const app = express()
-app.get('/', (req, res) => {
-    res.send('Hello world')
-})
+route(app)
 
 
-app.listen(config.port)
+app.listen(port)

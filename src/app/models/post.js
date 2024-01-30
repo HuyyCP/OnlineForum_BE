@@ -1,4 +1,4 @@
-import connection from '../../config/dbconfig'
+import connection from '../../config/DbConfig.js'
 import { DataTypes, Model, STRING, Sequelize } from 'sequelize'
 
 class Post extends Model {}
@@ -8,6 +8,6 @@ Post.init({
     title: { type: DataTypes.STRING}, 
     datecreate: {type: DataTypes.TIME},
     content: {type: DataTypes.STRING},
-}, {connection, tableName: "post", timestamps: false})
+}, {sequelize: connection, tableName: "post", timestamps: false})
 
 export default Post

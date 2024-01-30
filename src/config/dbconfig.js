@@ -1,4 +1,4 @@
-import { database } from '.';
+import { database } from './index.js';
 import Sequelize from 'sequelize';
 
 const connection = new Sequelize(
@@ -11,4 +11,4 @@ const connection = new Sequelize(
     }
 );
 
-export default connection;
+export default connection

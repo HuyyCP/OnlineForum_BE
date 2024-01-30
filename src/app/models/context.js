@@ -1,11 +1,11 @@
-import connection from "../../config/dbconfig"
-import Account from "./account"
-import Comment from "./comment"
-import Post from "./post"
-import Role from "./role"
-import Subject from "./subject"
-import SubSubject from "./subsubject"
-import User from "./user"
+import connection from "../../config/DbConfig.js"
+import Account from "./Account.js"
+import Comment from "./Comment.js"
+import Post from "./Post.js"
+import Role from "./Role.js"
+import Subject from "./Subject.js"
+import SubSubject from "./SubSubject.js"
+import User from "./User.js"
 
 function Connect() {
     try {
