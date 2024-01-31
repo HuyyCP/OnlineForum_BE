@@ -1,13 +1,12 @@
-import { database } from './index.js';
 import Sequelize from 'sequelize';
 
 const connection = new Sequelize(
-    database.name, 
-    database.username, 
-    database.password, 
+    'onlineforum', 
+    'root', 
+    'root', 
     {
-        host: database.host,
-        dialect: database.dialect,
+        host: 'localhost',
+        dialect: 'mysql',
     }
 );
 

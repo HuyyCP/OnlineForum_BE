@@ -6,7 +6,6 @@ class UserRepo {
             attributes: ['name', 'email']
         }
         const user = await User.findAll(query)
-        console.log(JSON.parse(JSON.stringify(user)))
         return JSON.parse(JSON.stringify(user))
     }
 }

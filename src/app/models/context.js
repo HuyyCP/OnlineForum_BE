@@ -6,6 +6,7 @@ import Role from "./Role.js"
 import Subject from "./Subject.js"
 import SubSubject from "./SubSubject.js"
 import User from "./User.js"
+import { sequelize } from "sequelize"
 
 function Connect() {
     try {
