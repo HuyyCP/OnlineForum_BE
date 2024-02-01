@@ -6,41 +6,40 @@ import Role from "./Role.js"
 import Subject from "./Subject.js"
 import SubSubject from "./SubSubject.js"
 import User from "./User.js"
-import { sequelize } from "sequelize"
 
 function Connect() {
-    try {
-        connection.authenticate();
-        console.log('Connection has been established successfully.');
-      } catch (error) {
-        console.error('Unable to connect to the database:', error);
-      }
+  try {
+    connection.authenticate();
+    console.log('Connection has been established successfully.');
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+  }
 }
 
 function RenderDatabase() {
-    Account.belongsTo(User, {foreignKey: 'iduser'});
-    
-    Comment.belongsTo(Post, {foreignKey: 'idpost'})
-    Comment.belongsTo(User, {foreignKey: 'iduser'})
-    
-    Post.hasMany(Comment, {foreignKey: 'idpost'})
-    Post.belongsTo(User, {foreignKey: 'iduser'})
-    Post.belongsTo(SubSubject, {foreignKey: 'idsubject'})
-    
-    Role.hasMany(User, {foreignKey: 'idrole'})
-    
-    Subject.hasMany(SubSubject, {foreignKey: 'idsubject'})
-    
-    SubSubject.hasMany(Post, {foreignKey: 'idsubject'})
-    SubSubject.belongsTo(Subject, {foreignKey: 'idsuject'})
+  Account.belongsTo(User, { foreignKey: 'iduser' });
 
-    User.hasMany(Post, {foreignKey: 'iduser'})
-    User.hasMany(Comment, {foreignKey: 'iduser'})
-    User.hasOne(Account, {foreignKey: 'iduser'});
-    User.belongsTo(Role, {foreignKey: 'idrole'})
+  Comment.belongsTo(Post, { foreignKey: 'idpost' })
+  Comment.belongsTo(User, { foreignKey: 'iduser' })
 
-    sequelize.sync({ });
-    console.log("All models were synchronized successfully.");
+  Post.hasMany(Comment, { foreignKey: 'idpost' })
+  Post.belongsTo(User, { foreignKey: 'iduser' })
+  Post.belongsTo(SubSubject, { foreignKey: 'idsubject' })
+
+  Role.hasMany(User, { foreignKey: 'idrole' })
+
+  Subject.hasMany(SubSubject, { foreignKey: 'idsubject' })
+
+  SubSubject.hasMany(Post, { foreignKey: 'idsubject' })
+  SubSubject.belongsTo(Subject, { foreignKey: 'idsuject' })
+
+  User.hasMany(Post, { foreignKey: 'iduser' })
+  User.hasMany(Comment, { foreignKey: 'iduser' })
+  User.hasOne(Account, { foreignKey: 'iduser' });
+  User.belongsTo(Role, { foreignKey: 'idrole' })
+
+  connection.sync({});
+  console.log("All models were synchronized successfully.");
 }
 
-module.exports = {Connect, RenderDatabase};
+export default { Connect, RenderDatabase };

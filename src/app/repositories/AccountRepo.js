@@ -4,14 +4,20 @@ class AccountRepo {
 
     static async getAccountByUsername(username, password) {
         var query = {
-            attributes: ['username', 'password']
+            where: {
+                username: username,
+                password: password
+            }
         }
-        const account = await Account.findAll(query)
-        return account
+        return await Account.findOne(query)
     }
 
     static async addAccount(account) {
         Account.create(account)
+    }
+
+    static async getAccountById(idAccount) {
+        return await Account.findByPk(idAccount)
     }
 }
 

@@ -2,7 +2,7 @@ import accountController from "../app/controllers/AccountController.js"
 import { Router } from "express";
 const route = Router();
 
-route.get('/login', accountController.login)
-
+route.post('/login', accountController.login)
+route.post('/check-token', accountController.verifyToken)
 
 export default route
