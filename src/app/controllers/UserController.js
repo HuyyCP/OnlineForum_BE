@@ -1,8 +1,8 @@
-import userService from "../services/UserSvc.js"
+import userSvc from "../services/UserSvc.js"
 
 class UserController {
     static async index(req, res) {
-        res.json(await userService.getUser())
+        res.json(await userSvc.getUser())
     }
 }
 

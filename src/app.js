@@ -1,5 +1,5 @@
 import express from 'express'
-import route from './routes/index.js'
+import route from './routes/root.js'
 import cors from 'cors'
 import bodyParser from 'body-parser'
 import db from './app/models/Context.js'

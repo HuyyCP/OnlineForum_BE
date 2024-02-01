@@ -28,10 +28,10 @@ function RenderDatabase() {
 
   Role.hasMany(User, { foreignKey: 'idrole' })
 
-  Subject.hasMany(SubSubject, { foreignKey: 'idsubject' })
+  Subject.hasMany(SubSubject, { foreignKey: 'idparentsubject' })
 
   SubSubject.hasMany(Post, { foreignKey: 'idsubject' })
-  SubSubject.belongsTo(Subject, { foreignKey: 'idsuject' })
+  SubSubject.belongsTo(Subject, { foreignKey: 'idsubject' })
 
   User.hasMany(Post, { foreignKey: 'iduser' })
   User.hasMany(Comment, { foreignKey: 'iduser' })

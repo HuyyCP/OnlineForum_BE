@@ -2,13 +2,12 @@ import User from "../models/User.js"
 import Account from "../models/Account.js"
 import Role from "../models/Role.js"
 
-class UserRepo {
+class UserRep {
     static async getUser() {
         var query = {
             attributes: ['name', 'email']
         }
-        const user = await User.findAll(query)
-        return JSON.parse(JSON.stringify(user))
+        return await User.findAll(query)
     }
 
     static async getUserByIdAccount(idAccount) {
@@ -25,9 +24,8 @@ class UserRepo {
                 }
             ], 
         }
-        const user = await User.findOne(query)
-        return JSON.parse(JSON.stringify(user))
+        return await User.findOne(query)
     }
 }
 
-export default UserRepo
+export default UserRep

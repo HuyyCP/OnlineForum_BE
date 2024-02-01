@@ -1,6 +1,6 @@
 import Account from "../models/Account.js"
 
-class AccountRepo {
+class AccountRep {
 
     static async getAccountByUsername(username, password) {
         var query = {
@@ -21,4 +21,4 @@ class AccountRepo {
     }
 }
 
-export default AccountRepo
+export default AccountRep

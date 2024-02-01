@@ -1,8 +1,8 @@
-import UserRep from "../repositories/UserRepo.js"
+import userRep from "../repositories/UserRep.js"
 
 class UserService {
     static async getUser() {
-        return await UserRep.getUser()
+        return await userRep.getUser()
     }
 }
 
