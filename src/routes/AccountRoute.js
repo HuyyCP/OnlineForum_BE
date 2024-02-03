@@ -3,6 +3,6 @@ import { Router } from "express"
 const route = Router()
 
 route.post('/login', accountController.login)
-route.post('/check-token', accountController.verifyToken)
+route.post('/verify-token', accountController.verifyToken)
 
 export default route

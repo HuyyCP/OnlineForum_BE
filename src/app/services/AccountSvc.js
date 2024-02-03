@@ -19,21 +19,21 @@ class AccountSvc {
   }
 
   static async generateToken(claim) {
-    return jwt.sign({ claim }, process.env.SECRET_KEY, { expiresIn: process.env.EXPIRATION_TIME })
+    return jwt.sign(JSON.stringify({claim : claim}) , process.env.SECRET_KEY)
   }
 
   static async checkToken(token) {
     var user = null
     await jwt.verify(token, process.env.SECRET_KEY, async (err, decoded) => {
-      user =  err ? null : await userRep.getUserByIdAccount(decoded.claim)
+      console.log(decoded)
+      user = err ? null : await userRep.getUserByIdAccount(decoded.claim)
     });
     return user
-  }
+  } 
 
   static async verifyToken(token) {
     var user = await this.checkToken(token)
-    var newToken = user ? await this.generateToken(user.idaccount) : null
-    console.log(user)
+    var newToken = user ? await this.generateToken(user.Account.idaccount) : null
     return { newToken, user }
   }
 
