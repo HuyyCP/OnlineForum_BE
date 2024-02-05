@@ -25,7 +25,6 @@ class AccountSvc {
   static async checkToken(token) {
     var user = null
     await jwt.verify(token, process.env.SECRET_KEY, async (err, decoded) => {
-      console.log(decoded)
       user = err ? null : await userRep.getUserByIdAccount(decoded.claim)
     });
     return user
