@@ -20,8 +20,9 @@ class SubSubjectRep {
                         model: Role,
                         attributes: ['rolename'],
                     }
-                }
-            }
+                },
+            },
+            order: [[Post, 'datecreate', 'DESC']]
         }
         return await SubSubject.findOne(query)
     }

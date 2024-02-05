@@ -14,7 +14,7 @@ class PostRep {
                 {
                     model: User,
                     attributes: ['iduser', 'name'], 
-                    include : {
+                    include : { 
                         model: Role,
                         attributes: ['rolename']
                     }
@@ -29,9 +29,10 @@ class PostRep {
                             model: Role,
                             attributes: ['rolename']
                         }
-                    }
+                    },
                 },                
-            ]
+            ],
+            order: [[Comment, 'datecomment', "DESC"]]
         }
         return await Post.findOne(query)
     }
