@@ -4,12 +4,13 @@ import accountSvc from '../services/AccountSvc.js'
 class CommentController {
     static async addComment(req, res) {
         const token = req.headers.authorization
-        var user = accountSvc.checkToken(token)
+        var user = await accountSvc.checkToken(token)
         if(user == null) {
             res.status(401).json({message: "Error"})
             return
         }
         const comment = req.body
+        comment.iduser = user.iduser
         if(await commentSvc.addComment(comment)) {
             res.status(200).json({message: "Success"})
         } else {
