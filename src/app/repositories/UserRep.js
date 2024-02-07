@@ -26,6 +26,15 @@ class UserRep {
         }
         return await User.findOne(query)
     }
+
+    static async addUser(user) {
+        try {
+            await User.create(user)
+            return true
+        } catch (err) {
+            return false
+        }
+    }
 }
 
 export default UserRep

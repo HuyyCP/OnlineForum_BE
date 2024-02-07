@@ -1,4 +1,5 @@
 import accountSvc from '../services/AccountSvc.js'
+import userSvc from '../services/UserSvc.js'
 
 class AccountController {
     static async login(req, res) {
@@ -18,6 +19,19 @@ class AccountController {
             'token': newToken,
             'user': user
         })
+    }
+
+    static async register(req, res) {
+        const {name, username, password, email, dateofbirth, phonenumber} = req.body
+        const iduser = await userSvc.addUser({name, email, dateofbirth, phonenumber})
+        if(iduser == null) {
+            res.status(400).json({message: "Error"})
+        }
+        if(await accountSvc.addAccount({username, password, iduser})) {
+            res.status(200).json({message: "Success"})
+        } else {
+            res.status(400).json({message: "Error"})
+        }
     }
 }
 

@@ -13,7 +13,12 @@ class AccountRep {
     }
 
     static async addAccount(account) {
-        Account.create(account)
+        try {
+            await Account.create(account)
+            return true
+        } catch (err) {
+            return false
+        }
     }
 
     static async getAccountById(idAccount) {

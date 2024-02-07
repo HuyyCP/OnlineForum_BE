@@ -15,11 +15,11 @@ class AccountSvc {
 
   static async addAccount(account) {
     account.idaccount = uuid()
-    accountRep.addAccount(account)
+    return await accountRep.addAccount(account)
   }
 
   static async generateToken(claim) {
-    return jwt.sign(JSON.stringify({claim : claim}) , process.env.SECRET_KEY)
+    return await jwt.sign(JSON.stringify({claim : claim}) , process.env.SECRET_KEY)
   }
 
   static async checkToken(token) {
