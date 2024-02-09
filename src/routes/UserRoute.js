@@ -3,7 +3,7 @@ import { Router } from "express"
 const route = Router()
 
 route.get('/get', userController.index)
-
+route.put('/update', userController.updateUser)
 
 export default route
 

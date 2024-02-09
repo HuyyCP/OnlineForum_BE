@@ -13,6 +13,10 @@ class UserService {
         user.idrole = "4ce1e18b-371c-4dd2-a69a-203166338f44" // Role member
         return await userRep.addUser(user) ? user.iduser : null
     }
+
+    static async updateUser(user) {
+        return await userRep.updateUser(user)
+    }
 }
 
 export default UserService

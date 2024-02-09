@@ -35,6 +35,26 @@ class UserRep {
             return false
         }
     }
+
+    static async updateUser(user) {
+        try {
+            await User.update(
+                {
+                    name: user.name, 
+                    email: user.email,
+                    dateofbirth: user.dateofbirth,
+                    phonenumber: user.phonenumber
+                }, {
+                    where: {
+                        iduser : user.iduser
+                    }
+                }
+            )
+            return true
+        } catch (err) {
+            return false
+        }
+    }
 }
 
 export default UserRep
