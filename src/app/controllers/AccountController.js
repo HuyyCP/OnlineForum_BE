@@ -33,6 +33,22 @@ class AccountController {
             res.status(400).json({message: "Error"})
         }
     }
+
+    static async changePassword(req, res) {
+        const token = req.headers.authorization
+        var user = await accountSvc.checkToken(token)
+        if(user == null) {
+            res.status(401).json({message: "Error"})
+            return
+        }
+        console.log(user.Account.idaccount)
+        const {password} = req.body
+        if(await accountSvc.changePassword(user.Account.idaccount, password)) {
+            res.status(200).json({message: "Success"})
+        } else {
+            res.status(400).json({message: "Error"})
+        }
+    }
 }
 
 export default AccountController

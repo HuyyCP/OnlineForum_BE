@@ -36,6 +36,10 @@ class AccountSvc {
     return { newToken, user }
   }
 
+  static async changePassword(idaccount, password) {
+    return await accountRep.changePassword(idaccount, password)
+  }
+
 }
 
 export default AccountSvc

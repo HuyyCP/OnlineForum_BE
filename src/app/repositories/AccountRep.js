@@ -24,6 +24,23 @@ class AccountRep {
     static async getAccountById(idAccount) {
         return await Account.findByPk(idAccount)
     }
+    
+    static async changePassword(idaccount, password) {
+        try {
+            await Account.update(
+                {
+                    password: password
+                }, {
+                    where : {
+                        idaccount: idaccount
+                    }
+                }
+            )
+            return true
+        } catch (err) {
+            return false
+        }
+    }
 }
 
 export default AccountRep
