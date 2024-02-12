@@ -3,24 +3,20 @@ import Account from "../models/Account.js"
 import Role from "../models/Role.js"
 
 class UserRep {
-    static async getUser() {
-        var query = {
-            attributes: ['name', 'email']
-        }
-        return await User.findAll(query)
-    }
-
     static async getUserByIdAccount(idAccount) {
         var query = {
+            attributes: ['iduser', 'name', 'email', 'dateofbirth', 'phonenumber'],
             include: [
                 {
                     model: Account,
+                    attributes: ['idaccount'],
                     where : {
                         idaccount: idAccount
                     }, 
                 },
                 {
                     model : Role,
+                    attributes: ['rolename']
                 }
             ], 
         }

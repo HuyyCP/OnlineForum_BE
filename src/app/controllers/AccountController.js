@@ -41,7 +41,6 @@ class AccountController {
             res.status(401).json({message: "Error"})
             return
         }
-        console.log(user.Account.idaccount)
         const {password} = req.body
         if(await accountSvc.changePassword(user.Account.idaccount, password)) {
             res.status(200).json({message: "Success"})

@@ -2,8 +2,14 @@ import userSvc from "../services/UserSvc.js"
 import accountSvc from "../services/AccountSvc.js"
 
 class UserController {
-    static async index(req, res) {
-        res.json(await userSvc.getUser())
+    static async getUser(req, res) {
+        const token = req.headers.authorization
+        var user = await accountSvc.checkToken(token)
+        if(user == null) {
+            res.status(401).json({message: "Error"})
+        } else {
+            res.status(200).json(user)
+        }
     }
 
     static async updateUser(req, res) {

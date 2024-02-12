@@ -3,10 +3,6 @@ import { v4 as uuid } from 'uuid'
 
 
 class UserService {
-    static async getUser() {
-        return await userRep.getUser()
-    }
-
     static async addUser(user) {
         user.iduser = uuid()
         user.datecreate = new Date().toISOString().slice(0, 19).replace('T', ' ')
