@@ -13,6 +13,21 @@ class PostController {
             res.status(401).json({message: "Error"})
         }
     }
+    
+    static async addPost(req, res) {
+        const token = req.headers.authorization
+        var user = await accountSvc.checkToken(token)
+        if(user == null) {
+            res.status(401).json({message: "Error"})
+            return
+        }
+        const {title, content, idsubject} = req.body
+        if(await postSvc.addPost({iduser: user.iduser, title, content, idsubject})) {
+            res.status(200).json({message: "Success"})
+        } else {
+            res.status(400).json({message: "Error"})
+        }
+    }
 }
 
 export default PostController

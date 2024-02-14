@@ -36,6 +36,15 @@ class PostRep {
         }
         return await Post.findOne(query)
     }
+
+    static async addPost(post) {
+        try {
+            await Post.create(post)
+            return true
+        } catch (err) {
+            return false
+        }
+    }
 }
 
 export default PostRep
