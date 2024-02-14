@@ -13,11 +13,10 @@ class AccountController {
 
     static async verifyToken(req, res) {
         var token = req.headers.authorization
-        var { newToken, user } = await accountSvc.verifyToken(token)
+        var newToken = await accountSvc.verifyToken(token)
         var responseCode = newToken != null ? 200 : 401
         res.status(responseCode).json({
             'token': newToken,
-            'user': user
         })
     }
 

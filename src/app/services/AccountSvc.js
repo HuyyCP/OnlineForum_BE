@@ -33,7 +33,7 @@ class AccountSvc {
   static async verifyToken(token) {
     var user = await this.checkToken(token)
     var newToken = user ? await this.generateToken(user.Account.idaccount) : null
-    return { newToken, user }
+    return newToken
   }
 
   static async changePassword(idaccount, password) {

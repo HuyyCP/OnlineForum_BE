@@ -2,6 +2,7 @@ import Post from "../models/Post.js"
 import Comment from "../models/Comment.js"
 import User from "../models/User.js"
 import Role from "../models/Role.js"
+import SubSubject from "../models/SubSubject.js"
 
 class PostRep {
     static async getAllCommentByPost(idPost) {
@@ -18,8 +19,10 @@ class PostRep {
                         model: Role,
                         attributes: ['rolename']
                     }
-                },
-                {
+                }, {
+                    model: SubSubject,
+                    attributes: ['idsubject', 'subjectname'],
+                }, {
                     model: Comment,
                     attributes: ['idcomment', 'message', 'datecomment'],
                     include : {
